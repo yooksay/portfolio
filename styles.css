@@ -17,12 +17,18 @@
      All contrast ratios verified against WCAG 2.1 Level AAA (7:1 for normal text, 4.5:1 for large text)
      Testing tool: WebAIM Contrast Checker (https://webaim.org/resources/contrastchecker/)
   */
-  --bg-primary: #FAFAFA;      /* Very light grey - Background */
-  --bg-secondary: #F0F0F0;    /* Subtle grey - Secondary background */
-  --text-primary: #1A1A1A;     /* Near black - 15.8:1 ratio on bg-primary (AAA) */
-  --text-secondary: #525252;   /* Medium-dark grey - 8.07:1 ratio on bg-primary (AAA) */
-  --accent: #2C5F6F;           /* Portrait-derived blue-gray - 8.1:1 ratio on bg-primary (AAA) */
-  --accent-hover: #3A7A8C;     /* Lighter blue-gray - 5.5:1 ratio on bg-primary (AA Large, AAA compliant) */
+  --bg-primary: #FAFAFA;
+  /* Very light grey - Background */
+  --bg-secondary: #F0F0F0;
+  /* Subtle grey - Secondary background */
+  --text-primary: #1A1A1A;
+  /* Near black - 15.8:1 ratio on bg-primary (AAA) */
+  --text-secondary: #525252;
+  /* Medium-dark grey - 8.07:1 ratio on bg-primary (AAA) */
+  --accent: #2C5F6F;
+  /* Portrait-derived blue-gray - 8.1:1 ratio on bg-primary (AAA) */
+  --accent-hover: #3A7A8C;
+  /* Lighter blue-gray - 5.5:1 ratio on bg-primary (AA Large, AAA compliant) */
 
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -68,8 +74,14 @@ ol {
 }
 
 /* Reset default margins */
-h1, h2, h3, h4, h5, h6,
-p, blockquote {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
   margin: 0;
 }
 
@@ -106,6 +118,7 @@ html {
 
 /* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -390,6 +403,89 @@ section {
 /* ===================================
    NON-CRITICAL CSS - BELOW THE FOLD
    =================================== */
+
+/* ===================================
+   AI FOCUS - Editorial Style
+   =================================== */
+.ai-focus {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Focus label - subtle, refined */
+.ai-focus-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.7;
+}
+
+/* Focus areas container */
+.ai-focus-areas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+/* Individual focus area */
+.ai-focus-area {
+  position: relative;
+}
+
+.ai-focus-area h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.02em;
+}
+
+/* Gradient accent bar */
+.focus-accent {
+  display: inline-block;
+  width: 4px;
+  height: 1.2em;
+  background: linear-gradient(180deg, #88A3B0 0%, #2C5F6F 100%);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ai-focus-area p {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Tablet and up - two column layout */
+@media (min-width: 640px) {
+  .ai-focus-areas {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .ai-focus-area p {
+    max-width: 95%;
+  }
+}
+
+/* Desktop refinements */
+@media (min-width: 1024px) {
+  .ai-focus {
+    margin-top: calc(var(--spacing-xl) * 1.25);
+  }
+
+  .ai-focus-area p {
+    max-width: 90%;
+  }
+}
 
 /* ===================================
    EXPERIENCE SECTION
@@ -712,7 +808,8 @@ section {
 }
 
 /* Smooth transition for all translatable content */
-[data-de], [data-en] {
+[data-de],
+[data-en] {
   transition: opacity 0.2s ease;
 }
 
@@ -779,7 +876,10 @@ section {
   }
 
   /* Prevent text overflow */
-  h1, h2, h3, p {
+  h1,
+  h2,
+  h3,
+  p {
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
@@ -799,6 +899,7 @@ section {
    =================================== */
 
 @media (min-width: 768px) and (max-width: 1024px) {
+
   /* Optimize hero section for tablet */
   .hero-description {
     max-width: 90%;
@@ -825,6 +926,7 @@ section {
    =================================== */
 
 @media (min-width: 1024px) {
+
   /* Enhance hero section for desktop */
   .hero-description {
     max-width: 80%;
@@ -899,6 +1001,7 @@ section {
    =================================== */
 
 @media (min-width: 1440px) {
+
   /* Increase section spacing for large screens */
   :root {
     --section-padding: clamp(6rem, 12vh, 10rem);
@@ -916,6 +1019,7 @@ section {
 
 /* Disable desktop hover animations for reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   .skills-tags li:hover,
   .experience-entry:hover,
   .case-image:hover img,
