@@ -118,27 +118,62 @@
             margin-bottom: var(--spacing-sm);
         }
 
-        .highlight-box {
+        /* Shared Card Base - "Confident Editorial" Style */
+        .highlight-box,
+        .framework-card {
+            position: relative;
             background-color: #FFFFFF;
-            border-radius: 8px;
-            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) + 4px);
-            margin: var(--spacing-md) 0;
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%) 1;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            /* Smooth, modern radius */
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            /* Subtle stroke */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            /* Contains the accent */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .highlight-box h4 {
-            font-size: 1rem;
-            font-weight: 600;
+        /* Interaction */
+        .highlight-box:hover,
+        .framework-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        /* Distinct "Accent" Logic using pseudo-element */
+        .highlight-box::before,
+        .framework-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%);
+            opacity: 0.8;
+        }
+
+        /* Typography Overrides */
+        .highlight-box h4,
+        .framework-card h4 {
+            font-size: 1.25rem;
+            /* Larger than body */
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: var(--spacing-xs);
-            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .highlight-box p {
+        .highlight-box p,
+        .framework-card p {
             margin: 0;
             font-size: 0.9375rem;
+            color: var(--text-secondary);
         }
 
         .case-image-full {
@@ -161,33 +196,15 @@
             }
         }
 
-        .framework-card {
-            background-color: #FFFFFF;
-            border-radius: 8px;
-            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) + 4px);
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%) 1;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-        }
-
-        .framework-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-xs);
-            letter-spacing: -0.01em;
-        }
-
-        /* Style step numbers in accent color */
+        /* Step Number Styling (Framework Card) */
         .step-number {
+            font-size: 0.8em;
+            background: rgba(90, 138, 154, 0.1);
+            /* Brand tint */
             color: var(--accent);
+            padding: 0.25em 0.6em;
+            border-radius: 6px;
             font-weight: 700;
-        }
-
-        .framework-card p {
-            margin: 0;
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
         }
 
         .decision-table {
@@ -341,7 +358,7 @@
                 </p>
             </div>
 
-            <div class="highlight-box" style="border-left: 4px solid var(--accent);">
+            <div class="highlight-box">
                 <p style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);"
                     data-de="„Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell zu handeln.""
                     data-en=""Help me avoid unnecessary D&D fees by alerting me early and helping me take quick action."">
