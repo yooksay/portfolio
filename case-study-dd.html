@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI UX Case Study: D&D Risk Monitor - Designing trustworthy AI interfaces for logistics">
+    <meta name="author" content="Timm Schroeder">
+
+    <title>D&D Risk Monitor — AI Case Study | Timm Schroeder</title>
+
+    <!-- Performance: Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Case Study Specific Styles */
+        .case-study-header {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding-top: calc(var(--spacing-xl) * 1.5);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: var(--spacing-md);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .case-study-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #5A8A9A 0%, #1E5263 100%);
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 2rem;
+            width: fit-content;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .case-study-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .case-study-subtitle {
+            font-size: var(--font-size-body);
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .case-study-section {
+            padding: var(--spacing-xl) var(--spacing-md);
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .case-study-section {
+                padding: var(--spacing-xl) var(--spacing-lg);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .case-study-section {
+                padding: var(--spacing-xl) 0;
+            }
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.7;
+        }
+
+        .section-title {
+            font-size: var(--font-size-h2);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .section-content p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) + 4px);
+            margin: var(--spacing-md) 0;
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%) 1;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+
+        .highlight-box h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+            letter-spacing: -0.01em;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        .case-image-full {
+            width: 100%;
+            border-radius: 8px;
+            margin: var(--spacing-md) 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        @media (min-width: 640px) {
+            .two-column {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .framework-card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) + 4px);
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%) 1;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+
+        .framework-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+            letter-spacing: -0.01em;
+        }
+
+        /* Style step numbers in accent color */
+        .step-number {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .framework-card p {
+            margin: 0;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        .decision-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-md) 0;
+            font-size: 0.9375rem;
+        }
+
+        .decision-table th,
+        .decision-table td {
+            text-align: left;
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--bg-secondary);
+        }
+
+        .decision-table th {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .decision-table td {
+            color: var(--text-secondary);
+        }
+
+        .learnings-list {
+            margin: var(--spacing-md) 0;
+        }
+
+        .learnings-list li {
+            position: relative;
+            padding-left: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .learnings-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .case-study-footer {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+            border-top: 1px solid var(--bg-secondary);
+        }
+
+        .case-study-footer p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+    </style>
+    <!-- PostHog Analytics -->
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_Pt99jAt8e4GbES4HzN92t5JSow5aHkkvI1MwLCnuNaa', { api_host: 'https://eu.i.posthog.com' })
+    </script>
+</head>
+
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher" role="group" aria-label="Language Selection">
+        <button class="lang-btn active" data-lang="de" aria-label="Deutsch" aria-pressed="true">DE</button>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+    </div>
+
+    <main id="main-content">
+        <!-- Header Section -->
+        <section class="case-study-header" aria-labelledby="case-study-title">
+            <a href="index.html" class="back-link">
+                <span data-de="← Zurück zum Portfolio" data-en="← Back to Portfolio">← Zurück zum Portfolio</span>
+            </a>
+
+            <div class="case-study-badge">
+                <span>✦</span>
+                <span data-de="AI Konzeptprojekt" data-en="AI Concept Project">AI Konzeptprojekt</span>
+            </div>
+
+            <h1 class="case-study-title" id="case-study-title">D&D Risk Monitor</h1>
+            <p class="case-study-subtitle"
+                data-de="Wie AI Logistikteams helfen kann, Demurrage & Detention-Risiken proaktiv zu managen – mit Fokus auf vertrauenswürdige Human-AI Interaction."
+                data-en="How AI can help logistics teams proactively manage Demurrage & Detention risks – with a focus on trustworthy Human-AI Interaction.">
+                Wie AI Logistikteams helfen kann, Demurrage & Detention-Risiken proaktiv zu managen – mit Fokus auf
+                vertrauenswürdige Human-AI Interaction.
+            </p>
+        </section>
+
+        <!-- The Problem Section -->
+        <section class="case-study-section" aria-labelledby="problem-heading">
+            <p class="section-label" data-de="Die Herausforderung" data-en="The Challenge">Die Herausforderung</p>
+            <h2 class="section-title" id="problem-heading" data-de="D&D-Gebühren: ein Milliardenproblem"
+                data-en="D&D Fees: A Billion-Dollar Problem">D&D-Gebühren: ein Milliardenproblem</h2>
+
+            <div class="section-content">
+                <p data-de="Demurrage & Detention (D&D) Gebühren kosten die Logistikbranche jährlich Milliarden. Das Problem: Die meisten Unternehmen reagieren erst, wenn die Gebühren bereits anfallen."
+                    data-en="Demurrage & Detention (D&D) fees cost the logistics industry billions annually. The problem: Most companies only react when fees have already started accruing.">
+                    Demurrage & Detention (D&D) Gebühren kosten die Logistikbranche jährlich Milliarden. Das Problem:
+                    Die meisten Unternehmen reagieren erst, wenn die Gebühren bereits anfallen.
+                </p>
+            </div>
+
+            <div class="two-column">
+                <div class="highlight-box">
+                    <h4 data-de="Informationen verstreut" data-en="Scattered Information">Informationen verstreut</h4>
+                    <p data-de="Daten über Container-Status sind über Carrier-Portale, E-Mails, interne Systeme und Häfen verteilt."
+                        data-en="Container status data is scattered across carrier portals, emails, internal systems, and ports.">
+                        Daten über Container-Status sind über Carrier-Portale, E-Mails, interne Systeme und Häfen
+                        verteilt.
+                    </p>
+                </div>
+                <div class="highlight-box">
+                    <h4 data-de="Reaktiv statt proaktiv" data-en="Reactive Instead of Proactive">Reaktiv statt proaktiv
+                    </h4>
+                    <p data-de="Teams erfahren oft erst von Problemen, wenn die Free Time bereits abgelaufen ist."
+                        data-en="Teams often learn about issues only after the free time period has already expired.">
+                        Teams erfahren oft erst von Problemen, wenn die Free Time bereits abgelaufen ist.
+                    </p>
+                </div>
+                <div class="highlight-box">
+                    <h4 data-de="Hohe kognitive Last" data-en="High Cognitive Load">Hohe kognitive Last</h4>
+                    <p data-de="Operations-Teams müssen hunderte Container gleichzeitig überwachen – ohne klare Priorisierung."
+                        data-en="Operations teams must monitor hundreds of containers simultaneously – without clear prioritization.">
+                        Operations-Teams müssen hunderte Container gleichzeitig überwachen – ohne klare Priorisierung.
+                    </p>
+                </div>
+                <div class="highlight-box">
+                    <h4 data-de="Komplexe Regeln" data-en="Complex Rules">Komplexe Regeln</h4>
+                    <p data-de="Gebührenstrukturen variieren je nach Hafen, Carrier und Container-Typ – schwer zu überblicken."
+                        data-en="Fee structures vary by port, carrier, and container type – difficult to oversee.">
+                        Gebührenstrukturen variieren je nach Hafen, Carrier und Container-Typ – schwer zu überblicken.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- JTBD Section -->
+        <section class="case-study-section" aria-labelledby="jtbd-heading">
+            <p class="section-label">Jobs to be Done</p>
+            <h2 class="section-title" id="jtbd-heading" data-de="Was Nutzer wirklich brauchen"
+                data-en="What Users Really Need">Was Nutzer wirklich brauchen</h2>
+
+            <div class="section-content">
+                <p data-de="Basierend auf Gesprächen mit Operations-Teams und meiner Erfahrung im Logistik-Tech-Bereich habe ich den Kern-Job identifiziert:"
+                    data-en="Based on conversations with operations teams and my experience in logistics tech, I identified the core job:">
+                    Basierend auf Gesprächen mit Operations-Teams und meiner Erfahrung im Logistik-Tech-Bereich habe ich
+                    den Kern-Job identifiziert:
+                </p>
+            </div>
+
+            <div class="highlight-box" style="border-left: 4px solid var(--accent);">
+                <p style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);"
+                    data-de="„Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell zu handeln.""
+                    data-en=""Help me avoid unnecessary D&D fees by alerting me early and helping me take quick action."">
+                    „Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell
+                    zu handeln." </p>
+            </div>
+
+            <div class="section-content">
+                <p data-de="Dieser Use Case erfüllt die Kriterien für einen guten AI-Anwendungsfall:"
+                    data-en="This use case meets the criteria for a good AI application:">
+                    Dieser Use Case erfüllt die Kriterien für einen guten AI-Anwendungsfall:
+                </p>
+            </div>
+
+            <table class="decision-table">
+                <tr>
+                    <th data-de="Kriterium" data-en="Criterion">Kriterium</th>
+                    <th data-de="Bewertung" data-en="Assessment">Bewertung</th>
+                </tr>
+                <tr>
+                    <td data-de="Hohe Frequenz" data-en="High Frequency">Hohe Frequenz</td>
+                    <td data-de="✓ Täglich, hunderte Container" data-en="✓ Daily, hundreds of containers">✓ Täglich,
+                        hunderte Container</td>
+                </tr>
+                <tr>
+                    <td data-de="Großes Problem" data-en="Significant Problem">Großes Problem</td>
+                    <td data-de="✓ Direkte Kostenwirkung" data-en="✓ Direct cost impact">✓ Direkte Kostenwirkung</td>
+                </tr>
+                <tr>
+                    <td data-de="Beschreibbarer Prozess" data-en="Describable Process">Beschreibbarer Prozess</td>
+                    <td data-de="✓ Klare Regeln und Fristen" data-en="✓ Clear rules and deadlines">✓ Klare Regeln und
+                        Fristen</td>
+                </tr>
+                <tr>
+                    <td data-de="Integration möglich" data-en="Integration Possible">Integration möglich</td>
+                    <td data-de="✓ APIs zu Carrier-Systemen" data-en="✓ APIs to carrier systems">✓ APIs zu
+                        Carrier-Systemen</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Framework Section -->
+        <section class="case-study-section" aria-labelledby="framework-heading">
+            <p class="section-label" data-de="Framework-Auswahl" data-en="Framework Selection">Framework-Auswahl</p>
+            <h2 class="section-title" id="framework-heading" data-de="Assistive AI, nicht autonome AI"
+                data-en="Assistive AI, Not Autonomous AI">Assistive AI, nicht autonome AI</h2>
+
+            <div class="section-content">
+                <p data-de="Für diesen Use Case habe ich bewusst einen assistiven Ansatz gewählt:"
+                    data-en="For this use case, I deliberately chose an assistive approach:">
+                    Für diesen Use Case habe ich bewusst einen assistiven Ansatz gewählt:
+                </p>
+            </div>
+
+            <table class="decision-table">
+                <tr>
+                    <th data-de="Entscheidung" data-en="Decision">Entscheidung</th>
+                    <th data-de="Wahl" data-en="Choice">Wahl</th>
+                    <th data-de="Begründung" data-en="Rationale">Begründung</th>
+                </tr>
+                <tr>
+                    <td data-de="Interaktionstyp" data-en="Interaction Type">Interaktionstyp</td>
+                    <td data-de="Assistiv" data-en="Assistive">Assistiv</td>
+                    <td data-de="AI empfiehlt, Mensch entscheidet" data-en="AI recommends, human decides">AI empfiehlt,
+                        Mensch entscheidet</td>
+                </tr>
+                <tr>
+                    <td data-de="Sichtbarkeit" data-en="Visibility">Sichtbarkeit</td>
+                    <td data-de="Semi-sichtbar" data-en="Semi-visible">Semi-sichtbar</td>
+                    <td data-de="Dashboard + Alerts, kein Chat-First" data-en="Dashboard + Alerts, not chat-first">
+                        Dashboard + Alerts, kein Chat-First</td>
+                </tr>
+                <tr>
+                    <td data-de="Automatisierungsgrad" data-en="Automation Level">Automatisierungsgrad</td>
+                    <td data-de="Level 2-3" data-en="Level 2-3">Level 2-3</td>
+                    <td data-de="Schlägt Aktionen vor, kann Entwürfe erstellen"
+                        data-en="Suggests actions, can draft communications">Schlägt Aktionen vor, kann Entwürfe
+                        erstellen</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- User Flow Section -->
+        <section class="case-study-section" aria-labelledby="flow-heading">
+            <p class="section-label" data-de="User Flow" data-en="User Flow">User Flow</p>
+            <h2 class="section-title" id="flow-heading" data-de="Von der Warnung zur Aktion"
+                data-en="From Alert to Action">Von der Warnung zur Aktion</h2>
+
+            <img src="assets/dd-wireframe-flow.jpg" alt="User flow wireframe showing dashboard to resolution steps"
+                class="case-image-full" loading="lazy">
+
+            <div class="section-content">
+                <p data-de="Der Flow führt Nutzer von der Übersicht gezielt zur Aktion – ohne Umwege:"
+                    data-en="The flow guides users from overview to action – without detours:">
+                    Der Flow führt Nutzer von der Übersicht gezielt zur Aktion – ohne Umwege:
+                </p>
+            </div>
+
+            <div class="two-column">
+                <div class="framework-card">
+                    <h4 data-de="1. Dashboard" data-en="1. Dashboard"><span class="step-number">1.</span> Dashboard</h4>
+                    <p data-de="Übersicht aller Container mit AI-generiertem Risiko-Score. Priorisierung auf einen Blick."
+                        data-en="Overview of all containers with AI-generated risk scores. Prioritization at a glance.">
+                        Übersicht aller Container mit AI-generiertem Risiko-Score. Priorisierung auf einen Blick.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4 data-de="2. Risk Alert" data-en="2. Risk Alert"><span class="step-number">2.</span> Risk Alert
+                    </h4>
+                    <p data-de="Proaktive Benachrichtigung bei erkanntem Risiko. Schneller Einstieg in Details."
+                        data-en="Proactive notification when risk is detected. Quick access to details.">
+                        Proaktive Benachrichtigung bei erkanntem Risiko. Schneller Einstieg in Details.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4 data-de="3. AI Analysis" data-en="3. AI Analysis"><span class="step-number">3.</span> AI
+                        Analysis</h4>
+                    <p data-de="Erklärung warum die AI diesen Container markiert hat. Konfidenz-Level sichtbar."
+                        data-en="Explanation of why AI flagged this container. Confidence level visible.">
+                        Erklärung warum die AI diesen Container markiert hat. Konfidenz-Level sichtbar.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4 data-de="4. Resolution" data-en="4. Resolution"><span class="step-number">4.</span> Resolution
+                    </h4>
+                    <p data-de="Konkrete Handlungsoptionen mit AI-Unterstützung. Nutzer behält volle Kontrolle."
+                        data-en="Concrete action options with AI support. User retains full control.">
+                        Konkrete Handlungsoptionen mit AI-Unterstützung. Nutzer behält volle Kontrolle.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Screens Section -->
+        <section class="case-study-section" aria-labelledby="screens-heading">
+            <p class="section-label" data-de="Konzept-Screens" data-en="Concept Screens">Konzept-Screens</p>
+            <h2 class="section-title" id="screens-heading" data-de="Dashboard & Detail-Ansicht"
+                data-en="Dashboard & Detail View">Dashboard & Detail-Ansicht</h2>
+
+            <div class="two-column">
+                <div>
+                    <img src="assets/dd-dashboard.jpg" alt="D&D Risk Monitor Dashboard" class="case-image-full"
+                        loading="lazy">
+                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--spacing-xs);"
+                        data-de="Dashboard mit Container-Übersicht und Risiko-Scores"
+                        data-en="Dashboard with container overview and risk scores">
+                        Dashboard mit Container-Übersicht und Risiko-Scores
+                    </p>
+                </div>
+                <div>
+                    <img src="assets/dd-ai-detail.jpg" alt="Container Risk Analysis with AI recommendations"
+                        class="case-image-full" loading="lazy">
+                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--spacing-xs);"
+                        data-de="Detail-Ansicht mit AI-Analyse und Handlungsempfehlungen"
+                        data-en="Detail view with AI analysis and action recommendations">
+                        Detail-Ansicht mit AI-Analyse und Handlungsempfehlungen
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Patterns Section -->
+        <section class="case-study-section" aria-labelledby="patterns-heading">
+            <p class="section-label" data-de="AI UX Patterns" data-en="AI UX Patterns">AI UX Patterns</p>
+            <h2 class="section-title" id="patterns-heading" data-de="Vertrauen durch Transparenz"
+                data-en="Trust Through Transparency">Vertrauen durch Transparenz</h2>
+
+            <div class="section-content">
+                <p data-de="Um Vertrauen in AI-Entscheidungen zu schaffen, habe ich vier zentrale UX-Patterns angewendet:"
+                    data-en="To build trust in AI decisions, I applied four core UX patterns:">
+                    Um Vertrauen in AI-Entscheidungen zu schaffen, habe ich vier zentrale UX-Patterns angewendet:
+                </p>
+            </div>
+
+            <img src="assets/dd-ai-patterns.jpg"
+                alt="AI UX Design Patterns: Confidence, Explainability, Override, Progressive Disclosure"
+                class="case-image-full" loading="lazy">
+
+            <div class="two-column">
+                <div class="framework-card">
+                    <h4 data-de="Konfidenz-Indikatoren" data-en="Confidence Indicators">Konfidenz-Indikatoren</h4>
+                    <p data-de="Zeigt wie sicher die AI-Vorhersage ist. Nutzer können einschätzen, wie viel Gewicht sie der Empfehlung geben sollten."
+                        data-en="Shows how certain the AI prediction is. Users can assess how much weight to give the recommendation.">
+                        Zeigt wie sicher die AI-Vorhersage ist. Nutzer können einschätzen, wie viel Gewicht sie der
+                        Empfehlung geben sollten.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4 data-de="Erklärbarkeit" data-en="Explainability">Erklärbarkeit</h4>
+                    <p data-de="Jede AI-Empfehlung zeigt, warum sie getroffen wurde. Keine Black Box."
+                        data-en="Every AI recommendation shows why it was made. No black box.">
+                        Jede AI-Empfehlung zeigt, warum sie getroffen wurde. Keine Black Box.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4 data-de="Human Override" data-en="Human Override">Human Override</h4>
+                    <p data-de="Nutzer können jede AI-Entscheidung überschreiben. Die Kontrolle bleibt beim Menschen."
+                        data-en="Users can override any AI decision. Control stays with the human.">
+                        Nutzer können jede AI-Entscheidung überschreiben. Die Kontrolle bleibt beim Menschen.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4 data-de="Progressive Disclosure" data-en="Progressive Disclosure">Progressive Disclosure</h4>
+                    <p data-de="Zusammenfassung zuerst, Details auf Nachfrage. Reduziert kognitive Last."
+                        data-en="Summary first, details on demand. Reduces cognitive load.">
+                        Zusammenfassung zuerst, Details auf Nachfrage. Reduziert kognitive Last.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learnings Section -->
+        <section class="case-study-section" aria-labelledby="learnings-heading">
+            <p class="section-label" data-de="Erkenntnisse" data-en="Learnings">Erkenntnisse</p>
+            <h2 class="section-title" id="learnings-heading" data-de="Was ich gelernt habe" data-en="What I Learned">Was
+                ich gelernt habe</h2>
+
+            <ul class="learnings-list">
+                <li data-de="AI sollte den Nutzer befähigen, nicht ersetzen. Assistive AI schafft mehr Vertrauen als vollautomatische Systeme."
+                    data-en="AI should empower the user, not replace them. Assistive AI builds more trust than fully automated systems.">
+                    AI sollte den Nutzer befähigen, nicht ersetzen. Assistive AI schafft mehr Vertrauen als
+                    vollautomatische Systeme.
+                </li>
+                <li data-de="Konfidenz-Level sind essenziell. Nutzer müssen wissen, wie sicher die AI sich ist, um gute Entscheidungen treffen zu können."
+                    data-en="Confidence levels are essential. Users need to know how certain the AI is to make good decisions.">
+                    Konfidenz-Level sind essenziell. Nutzer müssen wissen, wie sicher die AI sich ist, um gute
+                    Entscheidungen treffen zu können.
+                </li>
+                <li data-de="Der Use Case muss zur AI-Technologie passen. LLMs sind stark bei Mustererkennung und Zusammenfassung – weniger bei präzisen numerischen Vorhersagen."
+                    data-en="The use case must fit the AI technology. LLMs are strong at pattern recognition and summarization – less so at precise numerical predictions.">
+                    Der Use Case muss zur AI-Technologie passen. LLMs sind stark bei Mustererkennung und Zusammenfassung
+                    – weniger bei präzisen numerischen Vorhersagen.
+                </li>
+                <li data-de="Prototyping mit AI-Tools (wie Claude) beschleunigt den Designprozess erheblich – von der Idee zum testbaren Konzept in Stunden statt Tagen."
+                    data-en="Prototyping with AI tools (like Claude) significantly accelerates the design process – from idea to testable concept in hours instead of days.">
+                    Prototyping mit AI-Tools (wie Claude) beschleunigt den Designprozess erheblich – von der Idee zum
+                    testbaren Konzept in Stunden statt Tagen.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Footer / CTA -->
+        <footer class="case-study-footer">
+            <p data-de="Interesse an meinem Ansatz für AI UX Design?"
+                data-en="Interested in my approach to AI UX Design?">
+                Interesse an meinem Ansatz für AI UX Design?
+            </p>
+            <nav aria-label="Contact links">
+                <div class="contact-links">
+                    <a href="mailto:hey@timmschroeder.de" class="contact-link"
+                        aria-label="Send email to hey@timmschroeder.de">hey@timmschroeder.de</a>
+                    <span class="link-separator" aria-hidden="true">•</span>
+                    <a href="https://www.linkedin.com/in/timm-schroeder/" target="_blank" rel="noopener noreferrer"
+                        class="contact-link" aria-label="Connect on LinkedIn (opens in new window)">LinkedIn</a>
+                </div>
+            </nav>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
