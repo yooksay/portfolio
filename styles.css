@@ -447,15 +447,7 @@ section {
   letter-spacing: -0.02em;
 }
 
-/* Gradient accent bar */
-.focus-accent {
-  display: inline-block;
-  width: 4px;
-  height: 1.2em;
-  background: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
+
 
 .ai-focus-area p {
   font-size: var(--font-size-body);
@@ -643,27 +635,27 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #5A8A9A 0%, #1E5263 100%);
+  background: rgba(0, 0, 0, 0.06);
 }
 
-.concept-icon {
-  font-size: 1.5rem;
-  color: #FFFFFF;
-  line-height: 1;
+.concept-badge .concept-icon-svg {
+  width: 32px;
+  height: 32px;
+  /* color property doesn't affect img tags, but keeping it for reference */
+  color: var(--text-primary);
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
-  .concept-icon {
-    font-size: 2rem;
+  .concept-badge .concept-icon-svg {
+    width: 48px;
+    height: 48px;
   }
 }
 
 /* Concept label styling */
 .concept-label {
-  background: linear-gradient(135deg, #5A8A9A 0%, #1E5263 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
   font-weight: 600 !important;
   letter-spacing: 0.08em !important;
 }

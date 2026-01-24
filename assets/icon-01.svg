@@ -1,0 +1,29 @@
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            class="icon-viewfinder-anim">
+            <style>
+                /* The container for the hover trigger */
+                .icon-viewfinder-anim {
+                    cursor: pointer;
+                }
+
+                /* The paths to animate */
+                .vf-bracket {
+                    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    transform-origin: center;
+                }
+
+                /* The Hover State: Slight scale down to simulate tightening focus */
+                .icon-viewfinder-anim:hover .vf-bracket {
+                    transform: scale(0.92);
+                }
+            </style>
+            <path class="vf-bracket" d="M4 9V5C4 4.44772 4.44772 4 5 4H9" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linecap="square" />
+            <path class="vf-bracket" d="M20 9V5C20 4.44772 19.5523 4 19 4H15" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linecap="square" />
+            <path class="vf-bracket" d="M4 15V19C4 19.5523 4.44772 20 5 20H9" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linecap="square" />
+            <path class="vf-bracket" d="M20 15V19C20 19.5523 19.5523 20 19 20H15" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linecap="square" />
+        </svg>

@@ -1,0 +1,28 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            class="icon-core-anim">
+            <style>
+                .icon-core-anim {
+                    cursor: pointer;
+                }
+
+                /* Define transitions for smooth movement */
+                .core-layer {
+                    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                }
+
+                /* Hover State: Move top layer up, bottom layer down. Middle stays put. */
+                .icon-core-anim:hover .core-top {
+                    transform: translateY(-1.5px);
+                }
+
+                .icon-core-anim:hover .core-bottom {
+                    transform: translateY(1.5px);
+                }
+            </style>
+            <path class="core-layer core-top" d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linejoin="round" />
+            <path class="core-layer core-mid" d="M2 12L12 17L22 12" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linejoin="round" />
+            <path class="core-layer core-bottom" d="M2 17L12 22L22 17" stroke="#1A1A1A" stroke-width="1.5"
+                stroke-linejoin="round" />
+        </svg>
