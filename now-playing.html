@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Now Playing - A curated feed of tracks currently on heavy rotation.">
+    <meta name="author" content="Timm Schroeder">
+
+    <title>Now Playing | Timm Schroeder</title>
+
+    <!-- Performance: Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Load Inter font - weights 400, 500, 600, 700, 800 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- PostHog Analytics -->
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_Pt99jAt8e4GbES4HzN92t5JSow5aHkkvI1MwLCnuNaa', { api_host: 'https://eu.i.posthog.com' })
+    </script>
+</head>
+
+<body class="subpage">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Language Switcher removed for English-only subpage -->
+
+    <!-- Navigation Back -->
+    <nav class="subpage-nav" aria-label="Back Navigation">
+        <div class="nav-container">
+            <a href="index.html" class="back-link" aria-label="Back to Portfolio">
+                <span data-de="← Zurück zum Portfolio" data-en="← Back to Portfolio">← Zurück zum Portfolio</span>
+            </a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Now Playing Header Section -->
+        <section id="now-playing-header" aria-labelledby="playlist-heading">
+            <div class="playlist-header-container">
+                <h1 id="playlist-heading" class="playlist-title">Now Playing</h1>
+                <p class="playlist-subtitle">
+                    A curated feed of tracks currently on heavy rotation. Fully automated by an AI agent workflow — new tracks are ingested via Gemini CLI & Antigravity, no manual coding required.
+                </p>
+                <!-- Equalizer Header Animation Removed -->
+            </div>
+        </section>
+
+        <!-- Dynamic Playlist Section -->
+        <section id="playlist-section" aria-label="Tracklist">
+            <div id="playlist-feed" class="playlist-list" role="list">
+                <!-- Javascript will inject tracks here -->
+                <div class="loading-state">Loading tracks...</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

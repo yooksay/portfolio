@@ -340,7 +340,7 @@
 
     <!-- Load Inter font - weights 500, 600, 700 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
     <!-- PostHog Analytics -->
     <script>
         !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
@@ -396,139 +396,72 @@
             </div>
 
             <ul class="skills-tags" aria-label="Core Skills">
-                <li data-de="UX Strategie" data-en="UX Strategy">UX Strategie</li>
-                <li data-de="UX Design" data-en="UX Design">UX Design</li>
-                <li data-de="AI Prototyping" data-en="AI Prototyping">AI Prototyping</li>
-                <li data-de="Human-AI Interaction" data-en="Human-AI Interaction">Human-AI Interaction</li>
+                <li class="tag-blue" data-de="UX Strategie" data-en="UX Strategy">UX Strategie</li>
+                <li class="tag-blue" data-de="UX Design" data-en="UX Design">UX Design</li>
+                <li class="tag-blue" data-de="AI Prototyping" data-en="AI Prototyping">AI Prototyping</li>
+                <li class="tag-blue" data-de="Human-AI Interaction" data-en="Human-AI Interaction">Human-AI Interaction</li>
             </ul>
 
-            <!-- AI Focus - Sophisticated Editorial Style -->
-            <div class="ai-focus" role="region" aria-labelledby="ai-focus-heading">
-                <p class="ai-focus-label" id="ai-focus-heading">
-                    <span data-de="Fokus" data-en="Focus">Fokus</span>
-                </p>
+        </section>
 
-                <div class="ai-focus-areas">
-                    <article class="ai-focus-area">
-                        <h3>
-                            <!-- Icon 01: Viewfinder -->
-                            <img src="assets/icon-01.svg" alt="" class="focus-icon" width="32" height="32"
-                                aria-hidden="true">
-                            <span data-de="UX für AI" data-en="UX für AI">UX für AI</span>
-                        </h3>
-                        <p data-de="Komplexe AI-Fähigkeiten in vertrauenswürdige Interfaces übersetzen – Copilots, Agents und datengetriebene Systeme, die transparent und steuerbar bleiben."
-                            data-en="Translating complex AI capabilities into trustworthy interfaces – Copilots, Agents, and data-driven systems that remain transparent and controllable.">
-                            Komplexe AI-Fähigkeiten in vertrauenswürdige Interfaces übersetzen – Copilots, Agents und
-                            datengetriebene Systeme, die transparent und steuerbar bleiben.
-                        </p>
-                    </article>
+        <!-- Side Projects & AI Experiments Section -->
+        <section id="side-projects" aria-labelledby="side-projects-heading" style="margin-bottom: var(--spacing-xxl);">
+            <h2 id="side-projects-heading" data-de="Side Projects" data-en="Side Projects">Side Projects</h2>
+            
+            <ul class="experiment-list" role="list">
+                <li class="experiment-item">
+                    <a href="case-study-dd.html" class="experiment-link">
+                        <div class="experiment-icon" style="background-color: #5856D6; color: white;">
+                            <!-- Shield/Dice Icon -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="experiment-content">
+                            <h3 data-de="D&D Risk Monitor" data-en="D&D Risk Monitor">D&D Risk Monitor</h3>
+                            <p class="experiment-meta" data-de="Concept Case Study" data-en="Concept Case Study">Concept Case Study</p>
+                            <p class="experiment-desc" data-de="Wie AI Logistikteams mit Demurrage & Detention-Risiken helfen kann." data-en="How AI can proactively help logistics teams manage shipping risks.">How AI can proactively help logistics teams manage shipping risks.</p>
+                        </div>
+                        <div class="experiment-arrow" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </li>
 
-                    <article class="ai-focus-area">
-                        <h3>
-                            <!-- Icon 02: Core Layers -->
-                            <img src="assets/icon-02.svg" alt="" class="focus-icon" width="32" height="32"
-                                aria-hidden="true">
-                            <span data-de="AI für UX" data-en="AI für UX">AI für UX</span>
-                        </h3>
-                        <p data-de="AI als Werkzeug im Design-Prozess nutzen – schneller von der Idee zum validierten Konzept durch LLMs, Generative Design und Datensynthese."
-                            data-en="Using AI as a tool in the design process – moving faster from concept to validated design through LLMs, generative design, and data synthesis.">
-                            AI als Werkzeug im Design-Prozess nutzen – schneller von der Idee zum validierten Konzept
-                            durch LLMs, Generative Design und Datensynthese.
-                        </p>
-                    </article>
-                </div>
-            </div>
-
+                <li class="experiment-item">
+                    <a href="now-playing.html" class="experiment-link">
+                        <div class="experiment-icon" style="background-color: #FF2D55; color: white;">
+                            <!-- Spotify-esque Icon -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="experiment-content">
+                            <h3 data-de="Now Playing" data-en="Now Playing">Now Playing</h3>
+                            <p class="experiment-meta" data-de="Automated via Gemini CLI & Antigravity" data-en="Automated via Gemini CLI & Antigravity">Automated via Gemini CLI & Antigravity</p>
+                            <p class="experiment-desc" data-de="Eine kuratierte Playlist, vollautomatisch geupdated mithilfe eines AI Agent Workflows." data-en="A curated playlist, fully automated by an AI agent workflow.">A curated playlist, fully automated by an AI agent workflow.</p>
+                        </div>
+                        <div class="experiment-arrow" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </section>
 
         <!-- Experience Section -->
         <section id="experience" aria-labelledby="experience-heading">
             <h2 id="experience-heading" data-de="Projekte" data-en="Experience">Projekte</h2>
 
-            <!-- AI Concept Project: D&D Risk Monitor -->
-            <article class="experience-entry ai-concept" aria-labelledby="dd-heading">
-                <div class="experience-header">
-                    <div class="company-logo concept-badge" aria-hidden="true">
-                        <!-- Icon 03: Assembly -->
-                        <img src="assets/icon-03.svg" alt="" class="concept-icon-svg" aria-hidden="true">
-                    </div>
-                    <h3 id="dd-heading" data-de="D&D Risk Monitor" data-en="D&D Risk Monitor">
-                        D&D Risk Monitor</h3>
-                    <p class="duration concept-label" data-de="Konzeptprojekt" data-en="Concept Project">Konzeptprojekt
-                    </p>
-                </div>
 
-                <div class="experience-images" role="img"
-                    aria-label="D&D Risk Monitor AI concept screenshots showing dashboard and AI-powered container analysis">
-                    <div class="case-image">
-                        <img src="assets/dd-dashboard.jpg"
-                            alt="D&D Risk Monitor dashboard showing container risk scores and potential costs"
-                            loading="lazy">
-                    </div>
-                    <div class="case-image">
-                        <img src="assets/dd-ai-detail.jpg"
-                            alt="Container risk analysis with AI-generated explanations and recommendations"
-                            loading="lazy">
-                    </div>
-                </div>
-
-                <p class="description"
-                    data-de="Ein Konzeptprojekt, das zeigt, wie AI Logistikteams helfen kann, Demurrage & Detention-Risiken proaktiv zu managen. Fokus auf vertrauenswürdige Human-AI Interaction und transparente AI-Entscheidungen."
-                    data-en="A concept project exploring how AI can help logistics teams proactively manage Demurrage & Detention risks. Focus on trustworthy Human-AI Interaction and transparent AI decisions.">
-                    Ein Konzeptprojekt, das zeigt, wie AI Logistikteams helfen kann, Demurrage & Detention-Risiken
-                    proaktiv zu managen. Fokus auf vertrauenswürdige Human-AI Interaction und transparente
-                    AI-Entscheidungen.
-                </p>
-
-                <p class="process-highlights"><strong data-de="Die Herausforderung:" data-en="The Challenge:">Die
-                        Herausforderung:</strong></p>
-                <ul class="outcomes">
-                    <li data-de="D&D-Gebühren sind reaktiv statt proaktiv"
-                        data-en="D&D fees are reactive instead of proactive">D&D-Gebühren sind reaktiv statt proaktiv
-                    </li>
-                    <li data-de="Informationen verstreut über Carrier, Häfen und interne Systeme"
-                        data-en="Information scattered across carriers, ports, and internal systems">Informationen
-                        verstreut über Carrier, Häfen und interne Systeme</li>
-                    <li data-de="Hohe kognitive Last für Operations-Teams"
-                        data-en="High cognitive load on operations teams">Hohe kognitive Last für Operations-Teams</li>
-                </ul>
-
-                <p class="process-highlights"><strong data-de="Mein Ansatz:" data-en="My Approach:">Mein
-                        Ansatz:</strong></p>
-                <ul class="process-list">
-                    <li data-de="JTBD-Analyse zur Identifikation der Kernbedürfnisse"
-                        data-en="JTBD analysis to identify core user needs">JTBD-Analyse zur Identifikation der
-                        Kernbedürfnisse</li>
-                    <li data-de="Framework-Auswahl: Assistive AI, eingebettet in bestehende Workflows"
-                        data-en="Framework selection: Assistive AI embedded in existing workflows">Framework-Auswahl:
-                        Assistive AI, eingebettet in bestehende Workflows</li>
-                    <li data-de="UX-Patterns für Vertrauen, Transparenz und Kontrolle"
-                        data-en="UX patterns for trust, transparency, and control">UX-Patterns für Vertrauen,
-                        Transparenz und Kontrolle</li>
-                    <li data-de="Prototyping mit AI-Tools (Claude, Figma AI)"
-                        data-en="Prototyping with AI tools (Claude, Figma AI)">Prototyping mit AI-Tools (Claude, Figma
-                        AI)</li>
-                </ul>
-
-                <p class="process-highlights"><strong data-de="AI UX Design-Entscheidungen:"
-                        data-en="AI UX Design Decisions:">AI UX Design-Entscheidungen:</strong></p>
-                <ul class="process-list">
-                    <li data-de="Konfidenz-Indikatoren: Wie sicher ist die AI-Vorhersage?"
-                        data-en="Confidence indicators: How certain is the AI prediction?">Konfidenz-Indikatoren: Wie
-                        sicher ist die AI-Vorhersage?</li>
-                    <li data-de="Erklärbarkeit: Warum hat die AI diesen Container markiert?"
-                        data-en="Explainability: Why did the AI flag this container?">Erklärbarkeit: Warum hat die AI
-                        diesen Container markiert?</li>
-                    <li data-de="Human-in-the-Loop: Nutzer behalten Kontrolle über alle kritischen Aktionen"
-                        data-en="Human-in-the-loop: Users retain control over all critical actions">Human-in-the-Loop:
-                        Nutzer behalten Kontrolle über alle kritischen Aktionen</li>
-                </ul>
-
-                <p class="case-study-link">
-                    <a href="case-study-dd.html" class="contact-link" data-de="→ Zur vollständigen Case Study"
-                        data-en="→ View Full Case Study">→ Zur vollständigen Case Study</a>
-                </p>
-            </article>
 
             <!-- Current Role -->
             <article class="experience-entry" aria-labelledby="hwl-heading">
@@ -745,8 +678,6 @@
             </article>
         </section>
 
-
-
         <!-- Contact Section -->
         <footer id="contact" role="contentinfo" aria-labelledby="contact-heading">
             <h2 id="contact-heading" data-de="Lass uns reden." data-en="Let's talk.">Lass uns sprechen.</h2>
@@ -766,7 +697,7 @@
         </footer>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>

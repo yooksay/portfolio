@@ -39,7 +39,7 @@
         }
 
         .back-link:hover {
-            color: var(--accent);
+            color: var(--color-purple-text);
         }
 
         .case-study-badge {
@@ -47,7 +47,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, #5A8A9A 0%, #1E5263 100%);
+            background: linear-gradient(135deg, #FF2D55 0%, #5856D6 100%);
             color: #FFFFFF;
             font-size: 0.75rem;
             font-weight: 600;
@@ -107,6 +107,8 @@
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: var(--spacing-md);
+            text-transform: none;
+            letter-spacing: -0.01em;
         }
 
         .section-content {
@@ -118,51 +120,29 @@
             margin-bottom: var(--spacing-sm);
         }
 
-        /* Shared Card Base - "Confident Editorial" Style */
+        /* Shared Base - Clean Editorial Style */
         .highlight-box,
         .framework-card {
             position: relative;
-            background-color: #FFFFFF;
-            border-radius: 16px;
-            /* Smooth, modern radius */
-            padding: 2rem;
+            padding: 0;
             margin: 1.5rem 0;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            /* Subtle stroke */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.02);
-            overflow: hidden;
-            /* Contains the accent */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Interaction */
-        .highlight-box:hover,
-        .framework-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        /* Items inside two-column grids get a subtle top border */
+        .two-column .highlight-box,
+        .two-column .framework-card {
+            padding-top: 1.5rem;
+            margin: 0;
+            border-top: 1px solid var(--bg-secondary);
         }
 
-        /* Distinct "Accent" Logic using pseudo-element */
-        .highlight-box::before,
-        .framework-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #5A8A9A 0%, #1E5263 100%);
-            opacity: 0.8;
-        }
-
-        /* Typography Overrides */
+        /* Typography */
         .highlight-box h4,
         .framework-card h4 {
-            font-size: 1.25rem;
-            /* Larger than body */
+            font-size: 1.125rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
             display: flex;
             align-items: center;
@@ -174,6 +154,7 @@
             margin: 0;
             font-size: 0.9375rem;
             color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         .case-image-full {
@@ -198,13 +179,17 @@
 
         /* Step Number Styling (Framework Card) */
         .step-number {
-            font-size: 0.8em;
-            background: rgba(90, 138, 154, 0.1);
-            /* Brand tint */
-            color: var(--accent);
-            padding: 0.25em 0.6em;
-            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 700;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
         .decision-table {
@@ -246,7 +231,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--color-purple-text);
             font-weight: 600;
         }
 
@@ -294,6 +279,42 @@
                 Wie AI Logistikteams helfen kann, Demurrage & Detention-Risiken proaktiv zu managen – mit Fokus auf
                 vertrauenswürdige Human-AI Interaction.
             </p>
+        </section>
+
+        <!-- Executive Summary Section (Migrated from Homepage) -->
+        <section class="case-study-section" aria-labelledby="summary-heading">
+            <p class="section-label" data-de="Auf einen Blick" data-en="Executive Summary">Auf einen Blick</p>
+            <h2 class="section-title" id="summary-heading" data-de="Projektübersicht" data-en="Project Overview">Projektübersicht</h2>
+
+            <div class="two-column">
+                <div class="highlight-box">
+                    <h4 data-de="Die Herausforderung" data-en="The Challenge">Die Herausforderung</h4>
+                    <ul class="learnings-list" style="margin-top: var(--spacing-sm);">
+                        <li data-de="D&D-Gebühren sind reaktiv statt proaktiv" data-en="D&D fees are reactive instead of proactive">D&D-Gebühren sind reaktiv statt proaktiv</li>
+                        <li data-de="Informationen verstreut über Carrier, Häfen und interne Systeme" data-en="Information scattered across carriers, ports, and internal systems">Informationen verstreut über Carrier, Häfen und interne Systeme</li>
+                        <li data-de="Hohe kognitive Last für Operations-Teams" data-en="High cognitive load on operations teams">Hohe kognitive Last für Operations-Teams</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h4 data-de="Mein Ansatz" data-en="My Approach">Mein Ansatz</h4>
+                    <ul class="learnings-list" style="margin-top: var(--spacing-sm);">
+                        <li data-de="JTBD-Analyse zur Identifikation der Kernbedürfnisse" data-en="JTBD analysis to identify core user needs">JTBD-Analyse zur Identifikation der Kernbedürfnisse</li>
+                        <li data-de="Framework-Auswahl: Assistive AI, eingebettet in bestehende Workflows" data-en="Framework selection: Assistive AI embedded in existing workflows">Framework-Auswahl: Assistive AI, eingebettet in bestehende Workflows</li>
+                        <li data-de="UX-Patterns für Vertrauen, Transparenz und Kontrolle" data-en="UX patterns for trust, transparency, and control">UX-Patterns für Vertrauen, Transparenz und Kontrolle</li>
+                        <li data-de="Prototyping mit AI-Tools (Claude, Figma AI)" data-en="Prototyping with AI tools (Claude, Figma AI)">Prototyping mit AI-Tools (Claude, Figma AI)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4 data-de="AI UX Design-Entscheidungen" data-en="AI UX Design Decisions">AI UX Design-Entscheidungen</h4>
+                <ul class="learnings-list" style="margin-top: var(--spacing-sm); columns: 2; column-gap: var(--spacing-md);">
+                    <li data-de="Konfidenz-Indikatoren: Wie sicher ist die AI-Vorhersage?" data-en="Confidence indicators: How certain is the AI prediction?">Konfidenz-Indikatoren: Wie sicher ist die AI-Vorhersage?</li>
+                    <li data-de="Erklärbarkeit: Warum hat die AI diesen Container markiert?" data-en="Explainability: Why did the AI flag this container?">Erklärbarkeit: Warum hat die AI diesen Container markiert?</li>
+                    <li data-de="Human-in-the-Loop: Nutzer behalten Kontrolle über alle kritischen Aktionen" data-en="Human-in-the-loop: Users retain control over all critical actions">Human-in-the-Loop: Nutzer behalten Kontrolle über alle kritischen Aktionen</li>
+                </ul>
+            </div>
         </section>
 
         <!-- The Problem Section -->
@@ -360,10 +381,10 @@
 
             <div class="highlight-box">
                 <p style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);"
-                    data-de="„Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell zu handeln.""
-                    data-en=""Help me avoid unnecessary D&D fees by alerting me early and helping me take quick action."">
-                    „Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell
-                    zu handeln." </p>
+                    data-de="Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell zu handeln."
+                    data-en="Help me avoid unnecessary D&D fees by alerting me early and helping me take quick action.">
+                    Hilf mir, unnötige D&D-Kosten zu vermeiden, indem du mich frühzeitig warnst und mir hilfst, schnell
+                    zu handeln.</p>
             </div>
 
             <div class="section-content">

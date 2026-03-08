@@ -18,8 +18,12 @@ function initLanguageSwitcher() {
   const langButtons = document.querySelectorAll('.lang-btn');
   const htmlElement = document.documentElement;
 
-  // Get saved language preference or default to German
-  let currentLang = localStorage.getItem('preferredLanguage') || 'de';
+  let currentLang = 'de';
+  try {
+    currentLang = localStorage.getItem('preferredLanguage') || 'de';
+  } catch (e) {
+    console.warn("localStorage not available, defaulting to 'de'");
+  }
 
   // Set initial language
   setLanguage(currentLang);
@@ -31,7 +35,11 @@ function initLanguageSwitcher() {
       if (newLang !== currentLang) {
         currentLang = newLang;
         setLanguage(newLang);
-        localStorage.setItem('preferredLanguage', newLang);
+        try {
+          localStorage.setItem('preferredLanguage', newLang);
+        } catch (e) {
+          console.warn("Could not save language preference");
+        }
       }
     });
   });
@@ -138,12 +146,101 @@ function initScrollAnimations() {
 }
 
 // ===================================
+// NOW PLAYING FEATURE
+// ===================================
+function initNowPlaying() {
+    const feedContainer = document.getElementById('playlist-feed');
+    if (!feedContainer) return; // Only run on the Now Playing page
+
+    fetch('playlist.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            renderTracks(data.tracks);
+        })
+        .catch(error => {
+            console.error('Error fetching playlist:', error);
+            feedContainer.innerHTML = `<div class="loading-state">Failed to load playlist.</div>`;
+        });
+
+    function renderTracks(tracks) {
+        if (!tracks || tracks.length === 0) {
+            feedContainer.innerHTML = `<div class="loading-state">No tracks added yet.</div>`;
+            return;
+        }
+
+        feedContainer.innerHTML = ''; // Clear loading state
+
+        tracks.forEach((track, index) => {
+            const trackEl = document.createElement('div');
+            trackEl.className = 'track-item';
+            trackEl.setAttribute('role', 'listitem');
+
+            const albumName = track.album ? escapeHtml(track.album) : '';
+            const urlLink = track.url || '#';
+
+            trackEl.innerHTML = `
+                <div class="track-status">
+                    <span>${index + 1}</span>
+                </div>
+                <div class="track-info">
+                    <div class="track-artist">${escapeHtml(track.artist)}</div>
+                    <div class="track-title">${escapeHtml(track.title)}</div>
+                </div>
+                <div class="track-meta" aria-label="Album: ${albumName}">${albumName}</div>
+                <div class="track-date">${track.addedAt ? formatRelativeDate(track.addedAt) : ''}</div>
+                <a href="${urlLink}" target="_blank" rel="noopener noreferrer" class="track-link" aria-label="Listen on Spotify">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                </a>
+            `;
+            feedContainer.appendChild(trackEl);
+        });
+    }
+
+    function escapeHtml(unsafe) {
+        if (!unsafe) return "";
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function formatRelativeDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        if (diffDays < 7) return `${diffDays}d ago`;
+        if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
+
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+}
+
+// ===================================
 // INITIALIZE ALL FEATURES
 // ===================================
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  initLanguageSwitcher();
-  initSmoothScroll();
-  initScrollAnimations();
-});
+function initAll() {
+    initLanguageSwitcher();
+    initSmoothScroll();
+    initScrollAnimations();
+    initNowPlaying();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+} else {
+    initAll();
+}
