@@ -1,6 +1,34 @@
 {
   "tracks": [
     {
+      "artist": "MJ Lenderman",
+      "title": "Wristwatch",
+      "album": "Manning Fireworks",
+      "url": "https://open.spotify.com/search/Wristwatch%20MJ%20Lenderman",
+      "addedAt": "2026-03-09T07:38:46+01:00"
+    },
+    {
+      "artist": "Dijon",
+      "title": "The Dress",
+      "album": "Absolutely",
+      "url": "https://open.spotify.com/track/0YMe6PHRbeDcN7KJdCG0bW?si=aaec775c6f034101",
+      "addedAt": "2026-03-09T07:27:11+01:00"
+    },
+    {
+      "artist": "Beastie Boys",
+      "title": "An Open Letter To NYC",
+      "album": "To The 5 Boroughs",
+      "url": "https://open.spotify.com/track/5vwudDPhjnuA1KrNsFjAHK?si=57cafb9992c2478d",
+      "addedAt": "2026-03-09T07:27:12+01:00"
+    },
+    {
+      "artist": "The Outfield",
+      "title": "Your Love",
+      "album": "Play Deep",
+      "url": "https://open.spotify.com/track/0WoFs3EdGOx58yX5BtXvOa?si=a7977e2a41ed4eab",
+      "addedAt": "2026-03-09T07:27:12+01:00"
+    },
+    {
       "artist": "The Mighty Rootsmen, Toots & The Maytals, Gregory Isaacs, Mykal Rose",
       "title": "I Won't Back Down",
       "album": "I Won't Back Down",
